@@ -11,8 +11,9 @@ namespace DEDORO_FINAL
     public class Message
     {
 
-        public Color BoxColor { get; set; }
-        public Color BoxtextColor { get; set; }
+        public Color BoxColor = Color.White;
+
+        public Color BoxtextColor = Color.Black;
 
         public void Show(string text, string button)
         {
@@ -25,6 +26,7 @@ namespace DEDORO_FINAL
                 "║                                                           ║",
                 "╚═══════════════════════════════════════════════════════════╝",
             };
+            Console.WriteLine();
             Console.WriteLine();
             Console.BackgroundColor = Color.White;
             for (int i = 0; i < messageBox.Length; i++)
@@ -73,6 +75,10 @@ namespace DEDORO_FINAL
         //Box Creator
         public void box(string title, int height, int width, string button)
         {
+            
+            Console.ForegroundColor = BoxtextColor;
+            Console.Clear();
+            Console.WriteLine();
             Console.WriteLine();
             for (int i = 0; i < height; i++)
             {
@@ -80,7 +86,7 @@ namespace DEDORO_FINAL
                 Console.SetCursorPosition((Console.WindowWidth - width) / 2, Console.CursorTop);
                 for (int j = 0; j < width; j++)
                 {
-                    //Console.ForegroundColor = BoxtextColor;
+                    
                     if (j == 0 && i == 0)
                     {
                         Console.Write("╔");

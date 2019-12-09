@@ -20,11 +20,11 @@ namespace DEDORO_FINAL
 
 
 
-            //Program pr = new Program();
+            ThreadStart sounds = new ThreadStart(Sounds.playFireFlies);
+            Thread sound = new Thread(sounds);
+            sound.Start();
 
-            Animations animate = new Animations();
-
-            ThreadStart Animation = new ThreadStart(animate.zetaAnimation);
+            ThreadStart Animation = new ThreadStart(Animations.zetaAnimation);
             Thread animation = new Thread(Animation);
             animation.Start();
 
@@ -33,23 +33,25 @@ namespace DEDORO_FINAL
             if (stop.Equals(ConsoleKey.Enter))
             {
                 animation.Abort();
+                Console.ReplaceAllColorsWithDefaults();
                 Console.BackgroundColor = Color.Black;
                 Console.ForegroundColor = Color.White;
-                Console.ReplaceAllColorsWithDefaults();
                 Console.Clear();
+                Animations.SpaceShipLoading();
                 UserInterface ui = new UserInterface();
                 ThreadStart main = new ThreadStart(ui.Initialize);
                 Thread Main = new Thread(main);
                 Main.Start();
-                
-                
 
             }
+
+
+
 
         }
 
 
-        
+
 
 
     }

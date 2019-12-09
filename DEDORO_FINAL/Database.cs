@@ -58,7 +58,7 @@ namespace DEDORO_FINAL
             string query = "INSERT INTO TBL_USERS VALUES( @f, @m, @l, @u, @p, @ut)";
             cmd = new MySqlCommand(query, con);
             con.Open();
-            var param = cmd.Parameters;
+            var param = cmd.Parameters;   
 
             param.AddWithValue("@f", fn);
             param.AddWithValue("@m", mn);

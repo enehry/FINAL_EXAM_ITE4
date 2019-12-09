@@ -269,7 +269,7 @@ namespace DEDORO_FINAL
                 }
                 Thread.Sleep(1000);
                 Message msg = new Message();
-                msg.box(" PRESS THE KEY OF YOUR CHOICE ",5,53, "[M]enu | [Any key] to play again | [H]igh Score ");
+                Message.CreateBox(" PRESS THE KEY OF YOUR CHOICE ",5,53, "[M]enu | [Any key] to play again | [H]igh Score ");
                 Console.CursorVisible = true;
 
                 Console.ReadKey(true);
@@ -306,7 +306,7 @@ namespace DEDORO_FINAL
             Console.Clear();
 
             Message msg = new Message();
-            msg.box(" HIGH SCORES ", 30, 40, "[M]enu    [Any key] play again");
+             Message.CreateBox(" HIGH SCORES ", 30, 40, "[M]enu    [Any key] play again");
 
 
             Database db = new Database();

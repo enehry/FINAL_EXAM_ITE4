@@ -11,7 +11,7 @@ namespace DEDORO_FINAL
 {
     public class Animations
     {
-        public void zetaAnimation()
+        public static void zetaAnimation()
         {
 
             
@@ -103,10 +103,12 @@ namespace DEDORO_FINAL
                     V = 0;
                   
 
-                    string key = "PRESS ANY KEY TO START";
+                    string key = "PRESS ENTER KEY TO START";
                     Console.SetCursorPosition((Console.WindowWidth - key.Length) / 2, Console.CursorTop + 3);
+                    Console.BackgroundColor = Color.Blue;
                     Console.WriteLine(key,Color.White);
-                    Thread.Sleep(500);
+                    Thread.Sleep(500);  
+                    Console.BackgroundColor = Color.Black;
                     Console.Clear();
                 }
 
@@ -114,6 +116,90 @@ namespace DEDORO_FINAL
                 Console.Clear();
 
             }
+        }
+
+
+        public static void SpaceShipLoading()
+        {
+
+            string[] spaceShip1 = {
+               "   __              ",
+               "   \\ \\______     ",
+               " ~~~[==     \\___  ",
+               " ~~~[==_____/      ",
+               "   /_/             ", };
+
+
+            int j = 0;
+            int i;
+          
+
+            while (j <= 100)
+            {
+                
+                for (i = 0; i < spaceShip1.Length; i++)
+                {
+                    Console.SetCursorPosition(j, ((Console.WindowHeight - spaceShip1.Length)/2)+i);
+                    Console.WriteLine(spaceShip1[i], Color.Yellow);
+
+
+                }
+
+              
+
+                string loading = $"L O A D I N G  {j}   %";
+                Console.SetCursorPosition((Console.WindowWidth - loading.Length) / 2, Console.CursorTop);
+                Console.WriteLine(loading);
+                Thread.Sleep(100);
+                Console.Clear();
+                
+                i = 0;
+                j += 10;
+            }
+                    
+        }
+
+        public static void SpaceShip()
+        {
+
+            for (int i = 1; i <= 100; i++)
+            {
+                if(i%2 == 0)
+                {
+                    Console.WriteLine(@"
+
+        |
+     \  :  /     
+  `. __/ \__.'   
+  _  \     / _ _ 
+     /_   _\     
+   .'  \ /  `.   
+     /  :  \      
+        |        ",Color.Yellow);
+                }
+                else
+                {
+                    Console.WriteLine(@"
+        :
+    \   |   /
+     \  :  /     
+  `. __/ \__ .'   
+_ _  \     / _ _ 
+     /_   _\     
+   .'  \ /  `.   
+     /  :  \      
+   /    |    \
+        :        ",Color.Goldenrod);
+                }
+                
+                Thread.Sleep(5);
+                Console.Clear();
+                System.Console.WriteLine($"LOAING {i} %");
+            }
+
+            
+            
+          
         }
     }
 }

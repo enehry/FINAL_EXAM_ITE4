@@ -62,32 +62,35 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snake.cs" />
+    <Compile Include="Sounds.cs" />
     <Compile Include="UserInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="bin\Debug\Font\banner.flf" />
-    <None Include="bin\Debug\Font\big.flf" />
-    <None Include="bin\Debug\Font\block.flf" />
-    <None Include="bin\Debug\Font\bubble.flf" />
-    <None Include="bin\Debug\Font\digital.flf" />
-    <None Include="bin\Debug\Font\ivrit.flf" />
-    <None Include="bin\Debug\Font\lean.flf" />
-    <None Include="bin\Debug\Font\mini.flf" />
-    <None Include="bin\Debug\Font\script.flf" />
-    <None Include="bin\Debug\Font\shadow.flf" />
-    <None Include="bin\Debug\Font\slant.flf" />
-    <None Include="bin\Debug\Font\small.flf" />
-    <None Include="bin\Debug\Font\smscript.flf" />
-    <None Include="bin\Debug\Font\smshadow.flf" />
-    <None Include="bin\Debug\Font\smslant.flf" />
-    <None Include="bin\Debug\Font\standard.flf" />
-    <None Include="bin\Debug\Font\term.flf" />
+    <None Include="bin\Debug\Fonts\banner.flf" />
+    <None Include="bin\Debug\Fonts\big.flf" />
+    <None Include="bin\Debug\Fonts\block.flf" />
+    <None Include="bin\Debug\Fonts\bubble.flf" />
+    <None Include="bin\Debug\Fonts\digital.flf" />
+    <None Include="bin\Debug\Fonts\ivrit.flf" />
+    <None Include="bin\Debug\Fonts\lean.flf" />
+    <None Include="bin\Debug\Fonts\mini.flf" />
+    <None Include="bin\Debug\Fonts\script.flf" />
+    <None Include="bin\Debug\Fonts\shadow.flf" />
+    <None Include="bin\Debug\Fonts\slant.flf" />
+    <None Include="bin\Debug\Fonts\small.flf" />
+    <None Include="bin\Debug\Fonts\smscript.flf" />
+    <None Include="bin\Debug\Fonts\smshadow.flf" />
+    <None Include="bin\Debug\Fonts\smslant.flf" />
+    <None Include="bin\Debug\Fonts\standard.flf" />
+    <None Include="bin\Debug\Fonts\term.flf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Font\readme.txt" />
+    <Content Include="bin\Debug\Fonts\readme.txt" />
+    <Content Include="bin\Debug\Sounds\fireflies.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

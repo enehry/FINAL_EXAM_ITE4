@@ -16,7 +16,7 @@ namespace DEDORO_FINAL
     public class UserInterface
     {
 
-        Message msg = new Message();
+       
         private ConsoleKey select;
         private string lblSelect, lblBack;
         SpeechSynthesizer syn = new SpeechSynthesizer();
@@ -26,8 +26,9 @@ namespace DEDORO_FINAL
 
         public void Initialize()
         {
-           
+            
             LoginScreen();
+           
         }
 
 
@@ -36,70 +37,40 @@ namespace DEDORO_FINAL
 
         public void LoginScreen()
         {
+            
+            Console.Title = "(Z.E.T.A.) Zero sa Exam Terminal Application";
+            string username, password;
             Console.BackgroundColor = Color.Black;
             Console.Clear();
-            Console.Title = "(Z.E.T.A.) Zero sa Exam Terminal Application";
-            string username, password, lblUsername, lblPassword, divider;
 
-            string[] login =
-            {
-               " ██       ██████  ██████   ██ ███    ██ ",
-               " ██      ██    ██ ██       ██ ████   ██ ",
-               " ██      ██    ██ ██   ███ ██ ██ ██  ██ ",
-               " ██      ██    ██ ██    ██ ██ ██  ██ ██ ",
-               " ███████  ██████   ██████  ██ ██   ████ "
+            Message.TitleBox("L O G I N", 5, 20, ConsoleColor.Red, ConsoleColor.White);
 
-            };
-            int DA = 244;
-            int V = 212;
-            int ID = 255;
-            System.Console.WriteLine();
-            for (int i = 0; i < login.Length; i++)
-            {
-                Console.SetCursorPosition((Console.WindowWidth - login[i].Length) / 2, Console.CursorTop);
-                Console.WriteLine(login[i], Color.FromArgb(DA, V, ID));
-
-                DA -= 18;
-                V -= 36;
-                Thread.Sleep(30);
-            }
-
-
-            divider = "_____________________________________________________";
-
-            TextCenter(divider);
-            Console.WriteLine(divider);
-            divider = "__________________________________________________";
-            TextCenter(divider);
-            Console.WriteLine(divider);
-
-
-            Console.WriteLine("\n");
             
-            
-            lblUsername = "Username : ";
-            TextCenter(lblUsername, -5);
-            Console.Write(lblUsername, Color.Aquamarine);
+            Message.BoxColor = Color.Blue;
+            Message.BoxtextColor = Color.White;
 
-            syn.SetOutputToDefaultAudioDevice();
+            Message.CreateBox("  U S E R N A M E  ", 3, 30, ". . .");
             //syn.Speak("Enter your username");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 3, Console.CursorTop - 1);
             username = Console.ReadLine();
 
+            Console.WriteLine();
 
-            lblPassword = "Password : ";
-            TextCenter(lblPassword, -5);
-            Console.Write(lblPassword, Color.Aquamarine);
+            Message.BoxColor = Color.White;
+            Message.BoxtextColor = Color.Black;
+            Message.CreateBox("  P A S S W O R D  ", 3, 30, ". . .");
             //syn.Speak("Enter your password");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 3, Console.CursorTop - 1);
             password = Console.ReadLine();
 
 
+            
 
             if (db.isRegistered(username, password))
             {
-
-                USERNAME = username;
-
+                Console.BackgroundColor = Color.SteelBlue;
                 Console.Clear();
+                USERNAME = username;
                 //syn.Speak("Success, Please wait");
                 SystemMenu();
 
@@ -110,12 +81,30 @@ namespace DEDORO_FINAL
                 counter++;
                 if(counter < 3)
                 {
-                    Console.Clear();
+                    Console.CursorTop = 7;
+                    Message.TitleBox("I N V A L I D  U S E R  O R  P A S S  T R Y  A G A I N ", 5, 60, ConsoleColor.Red, ConsoleColor.White);
+                   
+                    Thread.Sleep(1000);
+                    
                     LoginScreen();
                 }
                 else
                 {
                     
+                    for (int i = 3; i >= 0; i--)
+                    {
+                        Console.BackgroundColor = Color.Red;
+                        Console.Clear();
+                        Console.CursorTop = 7;
+                        Message.TitleBox("S Y S T E M    B L O C K E D ", 6, 60, ConsoleColor.Red, ConsoleColor.White);
+                        Console.CursorTop = 11;
+                        Console.CursorLeft = (Console.WindowWidth / 2)-10;
+                        Console.WriteLine("E X I T T I N G  I N  {0}", i);
+                        Thread.Sleep(1000);
+                        
+                    }
+                    System.Environment.Exit(0);
+
                 }
             }
 
@@ -125,65 +114,26 @@ namespace DEDORO_FINAL
         public void SystemMenu()
         {
             Console.Title = "(Z.E.T.A.) Zero sa Exam Terminal Application";
+            Console.BackgroundColor = Color.Black;
+            Console.Clear();
             Console.WindowHeight = 40;
             Console.WindowWidth = 120;
-            string lblSelect;
             ConsoleKey select, ok;
 
-            Console.BackgroundColor = Color.DarkRed;
-            Console.ForegroundColor = Color.Black;
-            Console.Clear();
 
-            string[] menu =
-            {
-              " ███╗   ███╗███████╗███╗   ██╗██╗   ██╗ ",
-              " ████╗ ████║██╔════╝████╗  ██║██║   ██║ ",
-              " ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║ ",
-              " ██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║ ",
-              " ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝ ",
-              " ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝  "
-
-            };
-            
-            System.Console.WriteLine();
-            for (int i = 0; i < menu.Length; i++)
-            {
-                Console.SetCursorPosition((Console.WindowWidth - menu[i].Length) / 2, Console.CursorTop);
-                Console.WriteLine(menu[i], Color.White);
-
-             
-            }
-            
-
-            Formatter[] menus = new Formatter[]
-            {
-                new Formatter("USER ACCOUNT", Color.LightGoldenrodYellow),
-                new Formatter("BASIC", Color.Pink),
-                new Formatter("INTERMEDIATE", Color.PeachPuff),
-                new Formatter("ENTERTAINMENT", Color.Yellow),
-                new Formatter("CREDITS", Color.White),
-
-            };
-
-            System.Console.WriteLine();
-            
-            int x = -10;
-            TextCenter("", x);
-
-            TextCenter("", x);
-            Console.WriteLineFormatted("[A]. {0}", Color.Blue, menus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[B]. {1}", Color.Blue, menus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[C]. {2}", Color.Blue, menus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[D]. {3}", Color.Blue, menus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[E]. {4}", Color.Blue, menus);
-
-            lblSelect = "SELECT THE LETTER OF YOUR CHOICE";
-            TextCenter(lblSelect);
-            Console.WriteLine(lblSelect, Color.White);
+            Console.WriteLine();
+            Message.menuBox(3, 30, " M E N U ", ConsoleColor.Red, ConsoleColor.White, 1);
+            Message.menuBox(3, 30, " A. U S E R  A C C O U N T ", ConsoleColor.White, ConsoleColor.Blue, 1, -10);
+            Thread.Sleep(250);
+            Message.menuBox(3, 30, " B. B A S I C ", ConsoleColor.Blue, ConsoleColor.White, 1, 10);
+            Thread.Sleep(250);
+            Message.menuBox(3, 30, " C. I N T E R M E D I A T E ", ConsoleColor.White, ConsoleColor.Blue, 1, -10);
+            Thread.Sleep(250);
+            Message.menuBox(3, 30, " D. E N T E R T A I N M E N T ", ConsoleColor.Blue, ConsoleColor.White, 1, 10);
+            Thread.Sleep(250);
+            Message.menuBox(3, 30, " E. C R E D I T S ", ConsoleColor.White, ConsoleColor.Blue, 1, -10);
+            Message.menuBox(1, 10, " E N T E R  K E Y  O F  Y O U R  C H O I C E ", ConsoleColor.Blue, ConsoleColor.White);
+            Console.CursorLeft = (Console.WindowWidth / 2);
 
             select = Console.ReadKey().Key;
 
@@ -196,13 +146,13 @@ namespace DEDORO_FINAL
             else
             {
           
-                msg.Show("Invalid Selection", "[O]K");
+                Message.Show("Invalid Selection", "[O]K");
                 ok = Console.ReadKey().Key;
                 SystemMenu();
 
             }
 
-            msg.Show("Do you want to exit or go to Menu ?", "[E]xit : [Any key] Menu");
+            Message.Show("Do you want to exit or go to Menu ?", "[E]xit : [Any key] Menu");
 
             select = Console.ReadKey().Key;
 
@@ -227,8 +177,10 @@ namespace DEDORO_FINAL
             Console.Clear();
 
 
-            msg.BoxColor = Color.White;
-            msg.box(" CREATE NEW USER ACCOUNT ", 15, 50, "[S]ave [C]ancel");
+            Message.TitleBox(" C R E A T E  U S E R  A C C O U N T", 3, 50, ConsoleColor.Red, ConsoleColor.White);
+
+            Message.BoxColor = Color.White;
+            Message.CreateBox("", 15, 50, "[S]ave [C]ancel");
 
             string fn, mn, ln, user, pass, userType, lbl;
 
@@ -284,7 +236,7 @@ namespace DEDORO_FINAL
             {
                 if(db.Insert(fn,mn,ln,user,pass,userType) > 0)
                 {
-                    msg.ShowDark("Successfully Registered", "Press any key to continue....");
+                    Message.ShowDark("Successfully Registered", "Press any key to continue....");
                 }
             }
 
@@ -310,7 +262,8 @@ namespace DEDORO_FINAL
             Console.ForegroundColor = Color.White;
             Console.Clear();
 
-            msg.box(" BASIC ", 10, 70, "PRESS THE LETTER OF YOUR CHOICE OR [BACK SPACE] TO GO BACK");
+            Message.TitleBox(" B A S I C ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+            Message.CreateBox("", 10, 70, "PRESS THE LETTER OF YOUR CHOICE OR [BACK SPACE] TO GO BACK");
 
             Formatter[] subMenus = new Formatter[]
             {
@@ -336,7 +289,7 @@ namespace DEDORO_FINAL
                 double num1, num2;
                 string lblnum1, lblnum2;
 
-                msg.box(" SWAPPING ", 14, 70, ". . . .");
+                Message.CreateBox(" SWAPPING ", 14, 70, ". . . .");
 
 
 
@@ -379,7 +332,7 @@ namespace DEDORO_FINAL
 
                 string Op, lblnum1, lblnum2, lblOp;
 
-                msg.box(" MDAS ", 14, 70, ". . . .");
+                Message.CreateBox(" MDAS ", 14, 70, ". . . .");
 
 
                 lblnum1 = "Enter first number   : ";
@@ -413,7 +366,7 @@ namespace DEDORO_FINAL
                 double[] num = new double[3];
 
 
-                msg.box(" HIGHEST NUMBER ", 14, 70, ". . . .");
+                Message.CreateBox(" HIGHEST NUMBER ", 14, 70, ". . . .");
                 for (int i = 0; i < num.Length; i++)
                 {
                     if (i == 0) TextCenter("", -10, -11);
@@ -453,6 +406,8 @@ namespace DEDORO_FINAL
             Console.BackgroundColor = Color.Blue;
             Console.Clear();
 
+            Message.TitleBox(" I N T E R M E D I A T E ", 3, 40, ConsoleColor.Red, ConsoleColor.White);
+
             Console.WriteLine();
 
             Formatter[] subMenus = new Formatter[]
@@ -462,10 +417,11 @@ namespace DEDORO_FINAL
                 new Formatter("SALES TRANSACTION", Color.Black),
             };
 
-            msg.BoxColor = Color.White;
-    
 
-            msg.box(" INTERMIDIATE ", 10, 70, "PRESS THE LETTER OF YOUR CHOICE OR [BACK SPACE] TO GO BACK");
+
+
+            Message.BoxColor = Color.White;
+            Message.CreateBox("", 10, 70, "PRESS THE LETTER OF YOUR CHOICE OR [BACK SPACE] TO GO BACK");
 
             TextCenter("", x,-7);
             Console.WriteLineFormatted("[A]. {0}", Color.Blue, subMenus);
@@ -495,7 +451,7 @@ namespace DEDORO_FINAL
                 string fname, mname, lname, lblf, lblm, lbll, result;
 
 
-                msg.box(" HIGHEST NUMBER ", 10, 70, ". . . .");
+                Message.CreateBox(" HIGHEST NUMBER ", 10, 70, ". . . .");
 
              
 
@@ -522,7 +478,7 @@ namespace DEDORO_FINAL
 
 
 
-                msg.Show(result, "Press any key to continue....");
+                Message.Show(result, "Press any key to continue....");
 
 
 
@@ -541,7 +497,7 @@ namespace DEDORO_FINAL
 
 
 
-                msg.box(" GRADE COMPUTATION ", 12, 70, ". . . .");
+                Message.CreateBox(" GRADE COMPUTATION ", 12, 70, ". . . .");
 
            
 
@@ -572,7 +528,7 @@ namespace DEDORO_FINAL
                         Console.BackgroundColor = Color.Blue;
                         Console.Clear();
 
-                        msg.box(" INPUTING OF GRADES ", 12, 70, ". . . .");
+                        Message.CreateBox(" INPUTING OF GRADES ", 12, 70, ". . . .");
 
                         count = $"Subject No. {i + 1}";
                         TextCenter(count,0, -10);
@@ -634,14 +590,14 @@ namespace DEDORO_FINAL
             }
             else if (select.Equals(ConsoleKey.C))
             {
-                Console.BackgroundColor = Color.Black;
+                Console.BackgroundColor = Color.Blue;
                 Console.Clear();
 
                 string lblCustNo, lblcname, lbltp, lblpay, count;
                 int noCust;
 
 
-                msg.box(" INPUTING OF GRADES ", 7, 70, ". . . .");
+                Message.CreateBox(" INPUTING OF GRADES ", 7, 70, ". . . .");
 
 
                 lblCustNo = "Enter Customer Number : ";
@@ -668,7 +624,7 @@ namespace DEDORO_FINAL
 
                         Console.BackgroundColor = Color.Black;
                         Console.Clear();
-                        msg.box(" INPUTING OF CUSTOMERS ", 12, 70, ". . . .");
+                        Message.CreateBox(" INPUTING OF CUSTOMERS ", 12, 70, ". . . .");
 
                         count = $"Customer No. {i + 1}";
                         TextCenter(count);
@@ -744,9 +700,11 @@ namespace DEDORO_FINAL
             Console.Clear();
             Console.BackgroundColor = Color.Blue;
             Console.Clear();
-            msg.BoxColor = Color.White;
 
-            msg.box(" Entertainment ", 10, 40, "SELECT THE KEY OF YOUR CHOICE");
+            Message.TitleBox(" E N T E R T A I N M E N T ", 3, 40, ConsoleColor.Red, ConsoleColor.White);
+            Message.BoxColor = Color.White;
+
+            Message.CreateBox("", 10, 40, "SELECT THE KEY OF YOUR CHOICE");
 
 
            
@@ -780,9 +738,11 @@ namespace DEDORO_FINAL
             Console.BackgroundColor = Color.Blue;
             Console.Clear();
 
-            msg.BoxColor = Color.White;
-            msg.BoxtextColor = Color.Black;
-            msg.box(" CREDITS ", 15, 50, "THANK YOU");
+            Message.TitleBox(" C R E D I T S ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+
+            Message.BoxColor = Color.White;
+            Message.BoxColor = Color.Black;
+            Message.CreateBox("", 15, 50, "THANK YOU");
 
             string text, name, section, library, libname1, libname2;
 
@@ -834,10 +794,6 @@ namespace DEDORO_FINAL
             Console.ReadKey();
 
         }
-
-
-        
-
 
 
         // POSITIONING OF THE CURSOR

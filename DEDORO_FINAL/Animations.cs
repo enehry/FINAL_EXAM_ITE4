@@ -13,7 +13,7 @@ namespace DEDORO_FINAL
     {
         public static void zetaAnimation()
         {
-
+            Console.CursorVisible = false;
             
             string[,] zeta =
 {
@@ -103,7 +103,7 @@ namespace DEDORO_FINAL
                     V = 0;
                   
 
-                    string key = "PRESS ENTER KEY TO START";
+                    string key = " P R E S S  A N Y  K E Y  T O  S T A R T ";
                     Console.SetCursorPosition((Console.WindowWidth - key.Length) / 2, Console.CursorTop + 3);
                     Console.BackgroundColor = Color.Blue;
                     Console.WriteLine(key,Color.White);
@@ -122,6 +122,7 @@ namespace DEDORO_FINAL
         public static void SpaceShipLoading()
         {
 
+            Console.CursorVisible = false;
             string[] spaceShip1 = {
                "   __              ",
                "   \\ \\______     ",

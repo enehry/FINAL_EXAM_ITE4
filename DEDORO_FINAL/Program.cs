@@ -18,7 +18,9 @@ namespace DEDORO_FINAL
         {
 
 
-
+            Console.SetWindowPosition(0, 0);
+            Console.WindowHeight = Console.LargestWindowHeight;
+            Console.WindowWidth = Console.LargestWindowWidth;
 
             ThreadStart sounds = new ThreadStart(Sounds.playFireFlies);
             Thread sound = new Thread(sounds);
@@ -30,7 +32,7 @@ namespace DEDORO_FINAL
 
             ConsoleKey stop = Console.ReadKey().Key;
 
-            if (stop.Equals(ConsoleKey.Enter))
+            if (!stop.Equals(ConsoleKey.Escape))
             {
                 animation.Abort();
                 Console.ReplaceAllColorsWithDefaults();
@@ -38,9 +40,11 @@ namespace DEDORO_FINAL
                 Console.ForegroundColor = Color.White;
                 Console.Clear();
                 Animations.SpaceShipLoading();
+                Sounds.Stop();
                 UserInterface ui = new UserInterface();
                 ThreadStart main = new ThreadStart(ui.Initialize);
                 Thread Main = new Thread(main);
+                
                 Main.Start();
 
             }

@@ -161,7 +161,7 @@ namespace DEDORO_FINAL
         {
             List<HighScoreModel> hs = new List<HighScoreModel>();
 
-            string query = "SELECT * FROM TBL_HIGHSCORES";
+            string query = "SELECT * FROM TBL_HIGHSCORES ORDER BY SCORE DESC LIMIT 10";
             cmd = new MySqlCommand(query, con);
             con.Open();
             dr = cmd.ExecuteReader();
@@ -181,5 +181,138 @@ namespace DEDORO_FINAL
 
 
         }
+
+        public void insertStudentGrade(List<StudentGradeModel> stgrList)
+        {
+
+            string query = "INSERT INTO tbl_studentgrades (sname,subj,prelim, midterm, finals, ave, remarks) VALUES (@sname,@subj,@prelim, @midterm, @finals, @ave, @remarks)";
+            
+            cmd = new MySqlCommand(query,con);
+            con.Open();
+
+
+            foreach (var stgr in stgrList)
+            {
+
+                var param = cmd.Parameters;
+                param.Clear();
+                param.AddWithValue("@sname", stgr.sname);
+                param.AddWithValue("@subj", stgr.subj);
+                param.AddWithValue("@prelim", Math.Round(stgr.prelim,2));
+                param.AddWithValue("@midterm", Math.Round(stgr.midterm,2));
+                param.AddWithValue("@finals", Math.Round(stgr.finals,2));
+                param.AddWithValue("@ave", Math.Round(stgr.ave,2));
+                param.AddWithValue("@remarks", stgr.remarks);
+
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            con.Close();
+
+
+
+
+
+        }
+
+        public List<StudentGradeModel> getStudentGradeList()
+        {
+            var stgrList = new List<StudentGradeModel>();
+
+            string query = "SELECT * FROM TBL_STUDENTGRADES ORDER BY SNAME ASC";
+
+            cmd = new MySqlCommand(query, con);
+            con.Open();
+            dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                stgrList.Add(new StudentGradeModel {
+                    sname = (string)dr["sname"],
+                    subj = (string)dr["subj"],
+                    prelim = (double)dr["prelim"],
+                    midterm = (double)dr["midterm"],
+                    finals = (double)dr["finals"],
+                    ave = (double)dr["ave"],
+                    remarks = (string)dr["remarks"]
+
+
+                });
+            }
+
+            return stgrList;
+
+
+
+        }
+
+        public List<CustomerModel> getCUstomerList()
+        {
+            var custList = new List<CustomerModel>();
+
+            string query = "SELECT * FROM TBL_CUSTOMERS ORDER BY ID ASC";
+
+            cmd = new MySqlCommand(query, con);
+            con.Open();
+            dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                custList.Add(new CustomerModel
+                {
+                    ID = (int)dr["id"],
+                    CustName = (string)dr["custname"],
+                    totalPurch = (double)dr["totalpurch"],
+                    disc = (double)dr["disc"],
+                    totalDue = (double)dr["totalDue"],
+                    cpay = (double)dr["cpay"],
+                    change = (double)dr["chng"]
+
+
+                });
+            }
+
+            return custList;
+
+
+
+        }
+        public void insertCustomer(List<CustomerModel> custList)
+        {
+
+            string query = "INSERT INTO tbl_customers (custname, totalPurch, disc, totalDue, cpay, chng) VALUES (@custname, @totalPurch, @disc, @totalDue, @cpay, @change)";
+
+            cmd = new MySqlCommand(query, con);
+            con.Open();
+
+
+            foreach (var cust in custList)
+            {
+
+                var param = cmd.Parameters;
+                param.Clear();
+                param.AddWithValue("@custname", cust.CustName);
+                param.AddWithValue("@totalPurch", Math.Round(cust.totalPurch,2));
+                param.AddWithValue("@disc", Math.Round(cust.totalDue, 2));
+                param.AddWithValue("@totalDue", Math.Round(cust.totalDue, 2));
+                param.AddWithValue("@cpay", Math.Round(cust.cpay, 2));
+                param.AddWithValue("@change", Math.Round(cust.change, 2));
+    
+
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            con.Close();
+
+
+
+
+
+        }
+
     }
 }

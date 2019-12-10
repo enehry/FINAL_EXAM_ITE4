@@ -18,7 +18,6 @@ namespace DEDORO_FINAL
 
        
         private ConsoleKey select;
-        private string lblSelect, lblBack;
         SpeechSynthesizer syn = new SpeechSynthesizer();
 
         public string USERNAME;
@@ -72,8 +71,9 @@ namespace DEDORO_FINAL
                 Console.Clear();
                 USERNAME = username;
                 //syn.Speak("Success, Please wait");
-                SystemMenu();
-
+             
+                    SystemMenu();
+              
             }
             else
             {
@@ -116,8 +116,8 @@ namespace DEDORO_FINAL
             Console.Title = "(Z.E.T.A.) Zero sa Exam Terminal Application";
             Console.BackgroundColor = Color.Black;
             Console.Clear();
-            Console.WindowHeight = 40;
-            Console.WindowWidth = 120;
+            Console.WindowHeight = Console.LargestWindowHeight;
+            Console.WindowWidth = Console.LargestWindowWidth;
             ConsoleKey select, ok;
 
 
@@ -236,7 +236,7 @@ namespace DEDORO_FINAL
             {
                 if(db.Insert(fn,mn,ln,user,pass,userType) > 0)
                 {
-                    Message.ShowDark("Successfully Registered", "Press any key to continue....");
+                    Message.Show("Successfully Registered", "Press any key to continue....");
                 }
             }
 
@@ -253,9 +253,6 @@ namespace DEDORO_FINAL
         public void Basic()
         {
 
-            int x = -10;
-
-            
 
             Console.Clear();
             Console.BackgroundColor = Color.Blue;
@@ -263,21 +260,18 @@ namespace DEDORO_FINAL
             Console.Clear();
 
             Message.TitleBox(" B A S I C ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
-            Message.CreateBox("", 10, 70, "PRESS THE LETTER OF YOUR CHOICE OR [BACK SPACE] TO GO BACK");
+            Message.CreateBox("", 15, 30, "");
 
-            Formatter[] subMenus = new Formatter[]
-            {
-                new Formatter("SWAP", Color.Black),
-                new Formatter("MDAS", Color.Black),
-                new Formatter("HIGHEST NUMBER", Color.Black),
-            };
+            Console.CursorTop = 7;
+            Message.menuBox(3, 22, " [A]. S W A P ", ConsoleColor.Blue,ConsoleColor.White,1);
+            Message.menuBox(3, 22, " [B]. M D A S ", ConsoleColor.Blue, ConsoleColor.White,1);
+            Message.menuBox(3, 22, " [C]. HIGHEST NUMBER ", ConsoleColor.Blue, ConsoleColor.White,1);
 
-            TextCenter("", x, -7);
-            Console.WriteLineFormatted("[A]. {0}", Color.Blue, subMenus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[B]. {1}", Color.Blue, subMenus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[C]. {2}", Color.Blue, subMenus);
+            Console.WriteLine();
+            Console.WriteLine();
+            Message.menuBox(1, 30, " E N T E R  L E T T E R ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 30, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 30, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
             select = Console.ReadKey().Key;
 
             Console.BackgroundColor = Color.Blue;
@@ -289,7 +283,10 @@ namespace DEDORO_FINAL
                 double num1, num2;
                 string lblnum1, lblnum2;
 
-                Message.CreateBox(" SWAPPING ", 14, 70, ". . . .");
+
+                Message.TitleBox(" S W A P P I N G ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
+
+                Message.CreateBox("", 14, 70, ". . . .");
 
 
 
@@ -332,7 +329,9 @@ namespace DEDORO_FINAL
 
                 string Op, lblnum1, lblnum2, lblOp;
 
-                Message.CreateBox(" MDAS ", 14, 70, ". . . .");
+                Message.TitleBox(" M D A S ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
+
+                Message.CreateBox("", 14, 70, ". . . .");
 
 
                 lblnum1 = "Enter first number   : ";
@@ -353,7 +352,7 @@ namespace DEDORO_FINAL
 
 
                 string result = 
-                (Op == "+" || Op == "-" || Op == "/" || Op == "*" || Op == "%") ? $"RESULT : {act.MDAS(num1, Op, num2)}" : "INVALID OVERATOR";
+                (Op == "+" || Op == "-" || Op == "/" || Op == "*" || Op == "%") ? $"RESULT {num1} {Op} {num2} = {act.MDAS(num1, Op, num2)}" : "INVALID OVERATOR";
                 TextCenter(result,0,2);
                 Console.WriteLine(result);
 
@@ -365,8 +364,9 @@ namespace DEDORO_FINAL
             {
                 double[] num = new double[3];
 
+                Message.TitleBox(" HIGHEST NUMBER ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
 
-                Message.CreateBox(" HIGHEST NUMBER ", 14, 70, ". . . .");
+                Message.CreateBox("", 14, 70, ". . . .");
                 for (int i = 0; i < num.Length; i++)
                 {
                     if (i == 0) TextCenter("", -10, -11);
@@ -375,9 +375,9 @@ namespace DEDORO_FINAL
                     num[i] = double.Parse(Console.ReadLine());
                 }
 
-                string res = $"The Highest number is {num.Max()}";
+                string res = $"The Highest number in {num[0]}, {num[1]} and {num[2]} is {num.Max()}";
 
-                TextCenter(res, -10, +2);
+                TextCenter(res, 0, +2);
                 
                 Console.WriteLine(res);
 
@@ -398,8 +398,7 @@ namespace DEDORO_FINAL
         {
 
 
-            int x = -12;
-
+      
 
 
             Console.Clear();
@@ -407,35 +406,21 @@ namespace DEDORO_FINAL
             Console.Clear();
 
             Message.TitleBox(" I N T E R M E D I A T E ", 3, 40, ConsoleColor.Red, ConsoleColor.White);
+            Message.CreateBox("", 15, 36, "");
+
+            Console.CursorTop = 7;
+            Message.menuBox(3, 30, " [A]. STRING MANIPULATION ", ConsoleColor.Blue, ConsoleColor.White, 1);
+            Message.menuBox(3, 30, " [B]. GRADE COMPUTATION ", ConsoleColor.Blue, ConsoleColor.White, 1);
+            Message.menuBox(3, 30, " [C]. SALES TRANSACTION ", ConsoleColor.Blue, ConsoleColor.White, 1);
+
 
             Console.WriteLine();
+            Console.WriteLine();
 
-            Formatter[] subMenus = new Formatter[]
-            {
-                new Formatter("STRING MANIPULATION", Color.Black),
-                new Formatter("GRADE COMPUTATION", Color.Black),
-                new Formatter("SALES TRANSACTION", Color.Black),
-            };
+            Message.menuBox(1, 32, " E N T E R  L E T T E R " , ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 32, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 32, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
 
-
-
-
-            Message.BoxColor = Color.White;
-            Message.CreateBox("", 10, 70, "PRESS THE LETTER OF YOUR CHOICE OR [BACK SPACE] TO GO BACK");
-
-            TextCenter("", x,-7);
-            Console.WriteLineFormatted("[A]. {0}", Color.Blue, subMenus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[B]. {1}", Color.Blue, subMenus);
-            TextCenter("", x);
-            Console.WriteLineFormatted("[C]. {2}", Color.Blue, subMenus);
-
-            lblSelect = "SELECT THE LETTER OF YOUR CHOICE";
-            TextCenter(lblSelect);
-            Console.WriteLine(lblSelect, Color.White);
-            lblBack = "[BACK SPACE] TO GO BACK";
-            TextCenter(lblBack);
-            Console.WriteLine(lblBack, Color.White);
             select = Console.ReadKey().Key;
 
 
@@ -451,8 +436,9 @@ namespace DEDORO_FINAL
                 string fname, mname, lname, lblf, lblm, lbll, result;
 
 
-                Message.CreateBox(" HIGHEST NUMBER ", 10, 70, ". . . .");
-
+                Message.TitleBox(" STRING MANIPULATION ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
+                Message.CreateBox("", 10, 70, ". . . .");
+                
              
 
 
@@ -496,8 +482,8 @@ namespace DEDORO_FINAL
                 int subjNO;
 
 
-
-                Message.CreateBox(" GRADE COMPUTATION ", 12, 70, ". . . .");
+                Message.TitleBox(" GRADE COMPUTATION ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+                Message.CreateBox("", 12, 70, ". . . .");
 
            
 
@@ -519,6 +505,7 @@ namespace DEDORO_FINAL
                 double[] ave = new double[subjNO];
                 string[] subjName = new string[subjNO];
                 string[] remarks = new string[subjNO];
+                var stgrList = new List<StudentGradeModel>();
 
                 if (subjNO > 0)
                 {
@@ -559,23 +546,31 @@ namespace DEDORO_FINAL
 
                         remarks[i] = (ave[i] <= 3.0) ? "PASSED" : "FAILED";
 
-                        
+                        stgrList.Add(new StudentGradeModel {
+                            sname = sname,
+                            subj = subjName[i],
+                            prelim = pre[i],
+                            midterm = mid[i],
+                            finals = fin[i],
+                            ave = ave[i],
+                            remarks = remarks[i]
+
+                        });
 
                     }
+
+                    db.insertStudentGrade(stgrList);
                     Console.BackgroundColor = Color.Black;
                     Console.ForegroundColor = Color.White;
                     Console.Clear();
-                    var table = new ConsoleTable("SUBJECT", "PRELIM", "MIDTERM", "FINALS", "AVERAGE", "REMARKS");
+                    var table = new ConsoleTable("S T U D E N T  N A M E","S U B J E C T", "P R E L I M", "M I D T E R M ", "F I N A L S", " A V E R A G E", "R E M A R K S");
                     Console.WriteLine();
                     Console.WriteLine(" GRADE COMPUTATION TABLE", Color.White);
-                    Console.WriteLine();
-                    Console.WriteLine();
-                    Console.WriteLine("  Hello !{0}", sname);
-                    for (int i = 0; i < subjNO; i++)
+                    foreach (var stgrades in db.getStudentGradeList())
                     {
-                        table.AddRow(subjName[i], pre[i], mid[i], fin[i], ave[i], remarks[i]);
+                        table.AddRow(stgrades.sname, stgrades.subj, stgrades.prelim, stgrades.midterm, stgrades.finals, stgrades.ave, stgrades.remarks);
                     }
-
+                    
                     table.Write();
                     Console.WriteLine();
 
@@ -596,8 +591,9 @@ namespace DEDORO_FINAL
                 string lblCustNo, lblcname, lbltp, lblpay, count;
                 int noCust;
 
+                Message.TitleBox(" INPUTING OF CUSTOMER ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
 
-                Message.CreateBox(" INPUTING OF GRADES ", 7, 70, ". . . .");
+                Message.CreateBox("", 7, 70, ". . . .");
 
 
                 lblCustNo = "Enter Customer Number : ";
@@ -615,6 +611,8 @@ namespace DEDORO_FINAL
                 double[] change = new double[noCust];
                 double[] cpay = new double[noCust];
                 string[] custName = new string[noCust];
+
+                var custList = new List<CustomerModel>();
 
                 if (noCust > 0)
                 {
@@ -655,9 +653,21 @@ namespace DEDORO_FINAL
                         change[i] = cpay[i] - totalDue[i];
 
 
-                 
+                        custList.Add( new CustomerModel
+                            {
+                            CustName = (string)custName[i],
+                            totalPurch = (double) totalPurch[i],
+                            disc = (double) disc[i],
+                            totalDue = (double)totalDue[i],
+                            cpay = (double)cpay[i],
+                            change = (double)change[i]
+                            }
+                        );
 
                     }
+
+                    db.insertCustomer(custList);
+
 
                     Console.BackgroundColor = Color.Black;
                     Console.ForegroundColor = Color.White;
@@ -670,12 +680,13 @@ namespace DEDORO_FINAL
 
                     Console.WriteLine();
 
-                    var table = new ConsoleTable("CUSTOMER NAME", "TOTAL PURCHASE", "DISCOUNT", "TOTAL DUE", "CASH PAYMENT", "CHANGE");
+                    var table = new ConsoleTable(" C U S T O M E R  N A M E ", " T O T A L  P U R C H A S E ", " D I S C O U N T ", " T O T A L  D U E ", " C A S H  P A Y M E N T ", " C H A N G E ");
 
 
-                    for (int i = 0; i < noCust; i++)
+                  
+                    foreach (var cust in db.getCUstomerList())
                     {
-                        table.AddRow(custName[i], totalPurch[i], disc[i], totalDue[i], cpay[i], change[i]);
+                        table.AddRow(cust.CustName, cust.totalPurch, cust.disc, cust.totalDue, cust.cpay, cust.change);
                     }
 
                     table.Write();
@@ -741,14 +752,16 @@ namespace DEDORO_FINAL
             Message.TitleBox(" C R E D I T S ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
 
             Message.BoxColor = Color.White;
-            Message.BoxColor = Color.Black;
-            Message.CreateBox("", 15, 50, "THANK YOU");
 
-            string text, name, section, library, libname1, libname2;
+            Message.CreateBox("", 15, 50, "");
+
+            string text, name, section,prof, lblProf, library, libname1, libname2;
 
             text = "Developed and Designed by";
             name = "John Nehry C. Dedoro";
             section = "BSIT 1 - 1A";
+            prof = "M R.  A L K I N G  S U N G A";
+            lblProf = " P R O F F E S O R ";
             library = "C# Custom Library Used :";
             libname1 = "Colorful.Console by Tomakitaa";
             libname2 = "ConsoleTables by Khalidabuhakmeh";
@@ -772,6 +785,19 @@ namespace DEDORO_FINAL
                 Console.Write(section[i], Color.Black);
                 Thread.Sleep(50);
             }
+            Console.WriteLine();
+            Console.SetCursorPosition(((Console.WindowWidth - prof.Length) / 2), Console.CursorTop + 1);
+            for (int i = 0; i < prof.Length; i++)
+            {
+                Console.Write(prof[i], Color.Black);
+                Thread.Sleep(50);
+            }
+            Console.SetCursorPosition(((Console.WindowWidth - lblProf.Length) / 2), Console.CursorTop + 1);
+            for (int i = 0; i < lblProf.Length; i++)
+            {
+                Console.Write(lblProf[i], Color.Black);
+                Thread.Sleep(50);
+            }
             Console.SetCursorPosition(((Console.WindowWidth - library.Length) / 2), Console.CursorTop + 1);
             for (int i = 0; i < library.Length; i++)
             {
@@ -790,7 +816,14 @@ namespace DEDORO_FINAL
                 Console.Write(libname2[i], Color.Black);
                 Thread.Sleep(50);
             }
+            System.Console.WriteLine();
+            System.Console.WriteLine();
+            
+            Message.menuBox(1, 20, " T H A N K  Y O U ", ConsoleColor.Blue, ConsoleColor.White);
 
+            System.Console.WriteLine();
+            System.Console.WriteLine();
+            pressAnyKey();
             Console.ReadKey();
 
         }
@@ -801,7 +834,7 @@ namespace DEDORO_FINAL
         public void pressAnyKey()
         {
             Console.WriteLine();
-            string lblkey = "PRESS ANY KEY TO CONTINUE...";
+            string lblkey = "PRESS ANY KEY TO CONTINUE";
             TextCenter(lblkey);
             Console.WriteLine(lblkey);
         }

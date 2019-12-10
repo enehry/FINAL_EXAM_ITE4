@@ -4,19 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using System.Threading;
 
 namespace DEDORO_FINAL
 {
     public class Sounds
     {
+        static SoundPlayer fireflies = new SoundPlayer();
         public static void playFireFlies()
         {
-            SoundPlayer fireflies = new SoundPlayer();
+          
             fireflies.SoundLocation = "Sounds/fireflies.wav";
             fireflies.PlayLooping();
+           
         }
 
-
+        public static void Stop()
+        {
+            Thread.Sleep(1000);
+            fireflies.Stop();
+        }
+ 
 
     }
 }

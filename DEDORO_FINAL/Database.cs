@@ -230,6 +230,7 @@ namespace DEDORO_FINAL
             while (dr.Read())
             {
                 stgrList.Add(new StudentGradeModel {
+                    id = (int)dr["id"],
                     sname = (string)dr["sname"],
                     subj = (string)dr["subj"],
                     prelim = (double)dr["prelim"],
@@ -242,6 +243,7 @@ namespace DEDORO_FINAL
                 });
             }
 
+            con.Close();
             return stgrList;
 
 
@@ -273,7 +275,7 @@ namespace DEDORO_FINAL
 
                 });
             }
-
+            con.Close();
             return custList;
 
 
@@ -311,6 +313,34 @@ namespace DEDORO_FINAL
 
 
 
+
+        }
+
+
+        public void deleteStudent(int id)
+        {
+            string query = "DELETE FROM TBL_STUDENTGRADES WHERE ID = @id";
+
+            cmd = new MySqlCommand(query,con);
+            con.Open();
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+
+        }
+        public void deleteCustomer(int id)
+        {
+            string query = "DELETE FROM TBL_CUSTOMERS WHERE ID = @id";
+
+            cmd = new MySqlCommand(query, con);
+            con.Open();
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            con.Close();
 
         }
 

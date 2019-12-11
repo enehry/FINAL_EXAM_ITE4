@@ -280,10 +280,11 @@ namespace DEDORO_FINAL
                 {
                     UserInterface ui = new UserInterface();
                     ui.USERNAME = username;
-                  
+                    Console.ReplaceAllColorsWithDefaults();
+                    Console.Clear();
                     ui.SystemMenu();
                     
-                    Console.Clear();
+                    
                 }
                 else if (select.Equals(ConsoleKey.H))
                 {

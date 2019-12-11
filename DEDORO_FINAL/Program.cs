@@ -13,9 +13,10 @@ namespace DEDORO_FINAL
 {
     class Program
     {
-        
+
         public static void Main(string[] args)
         {
+
 
 
             Console.SetWindowPosition(0, 0);
@@ -29,6 +30,7 @@ namespace DEDORO_FINAL
             ThreadStart Animation = new ThreadStart(Animations.zetaAnimation);
             Thread animation = new Thread(Animation);
             animation.Start();
+
 
             ConsoleKey stop = Console.ReadKey().Key;
 
@@ -44,7 +46,7 @@ namespace DEDORO_FINAL
                 UserInterface ui = new UserInterface();
                 ThreadStart main = new ThreadStart(ui.Initialize);
                 Thread Main = new Thread(main);
-                
+
                 Main.Start();
 
             }

@@ -13,6 +13,7 @@ namespace DEDORO_FINAL
     {
         public static void zetaAnimation()
         {
+           
             Console.CursorVisible = false;
             
             string[,] zeta =
@@ -29,7 +30,7 @@ namespace DEDORO_FINAL
                     "  ███                                                     ",
                     "███████████████████                                       ",
                     "                                                          ",
-                    "Z E R O                                                    ",
+                    "Z E R O                                                   ",
 
                 },
                 {
@@ -121,7 +122,8 @@ namespace DEDORO_FINAL
 
         public static void SpaceShipLoading()
         {
-
+            Console.BackgroundColor = Color.SeaGreen;
+            Console.Clear();
             Console.CursorVisible = false;
             string[] spaceShip1 = {
                "   __              ",
@@ -140,15 +142,16 @@ namespace DEDORO_FINAL
                 
                 for (i = 0; i < spaceShip1.Length; i++)
                 {
-                    Console.SetCursorPosition(j, ((Console.WindowHeight - spaceShip1.Length)/2)+i);
-                    Console.WriteLine(spaceShip1[i], Color.Yellow);
+                    Console.SetCursorPosition(j+(Console.WindowWidth-100)/2, ((Console.WindowHeight - spaceShip1.Length)/2)+i);
+                    Console.WriteLine(spaceShip1[i], Color.LightYellow);
 
 
                 }
 
-              
+                
 
                 string loading = $"L O A D I N G  {j}   %";
+                
                 Console.SetCursorPosition((Console.WindowWidth - loading.Length) / 2, Console.CursorTop);
                 Console.WriteLine(loading);
                 Thread.Sleep(100);
@@ -157,6 +160,8 @@ namespace DEDORO_FINAL
                 i = 0;
                 j += 10;
             }
+
+            
                     
         }
 

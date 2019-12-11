@@ -39,16 +39,22 @@ namespace DEDORO_FINAL
             
             Console.Title = "(Z.E.T.A.) Zero sa Exam Terminal Application";
             string username, password;
-            Console.BackgroundColor = Color.Black;
+            Console.BackgroundColor = Color.SeaGreen;
             Console.Clear();
-
+            Console.CursorTop = 4;
+            Message.CreateBox("", 13, 26, "");
+            Console.CursorTop = 2;
             Message.TitleBox("L O G I N", 5, 20, ConsoleColor.Red, ConsoleColor.White);
 
-            
+          
+
             Message.BoxColor = Color.Blue;
             Message.BoxtextColor = Color.White;
 
-            Message.CreateBox("  U S E R N A M E  ", 3, 30, ". . .");
+           
+
+         
+            Message.CreateBox("  U S E R N A M E  ", 3, 30, "____");
             //syn.Speak("Enter your username");
             Console.SetCursorPosition((Console.WindowWidth / 2) - 3, Console.CursorTop - 1);
             username = Console.ReadLine();
@@ -57,7 +63,7 @@ namespace DEDORO_FINAL
 
             Message.BoxColor = Color.White;
             Message.BoxtextColor = Color.Black;
-            Message.CreateBox("  P A S S W O R D  ", 3, 30, ". . .");
+            Message.CreateBox("  P A S S W O R D  ", 3, 30, "____");
             //syn.Speak("Enter your password");
             Console.SetCursorPosition((Console.WindowWidth / 2) - 3, Console.CursorTop - 1);
             password = Console.ReadLine();
@@ -114,24 +120,29 @@ namespace DEDORO_FINAL
         public void SystemMenu()
         {
             Console.Title = "(Z.E.T.A.) Zero sa Exam Terminal Application";
-            Console.BackgroundColor = Color.Black;
+            Console.BackgroundColor = Color.SeaGreen;
             Console.Clear();
             Console.WindowHeight = Console.LargestWindowHeight;
             Console.WindowWidth = Console.LargestWindowWidth;
             ConsoleKey select, ok;
-
-
+            Console.CursorTop = 4;
+            Message.BoxColor = Color.Maroon;
+            Message.CreateBox("", 30, 34, "");
+            Message.BoxColor = Color.White;
+            Console.CursorTop = 2;
             Console.WriteLine();
             Message.menuBox(3, 30, " M E N U ", ConsoleColor.Red, ConsoleColor.White, 1);
-            Message.menuBox(3, 30, " A. U S E R  A C C O U N T ", ConsoleColor.White, ConsoleColor.Blue, 1, -10);
+            Message.menuBox(3, 30, " A. U S E R  A C C O U N T ", ConsoleColor.Blue, ConsoleColor.White, 1, -10);
             Thread.Sleep(250);
-            Message.menuBox(3, 30, " B. B A S I C ", ConsoleColor.Blue, ConsoleColor.White, 1, 10);
+            Message.menuBox(3, 30, " B. B A S I C ", ConsoleColor.White, ConsoleColor.Blue, 1, 10);
             Thread.Sleep(250);
-            Message.menuBox(3, 30, " C. I N T E R M E D I A T E ", ConsoleColor.White, ConsoleColor.Blue, 1, -10);
+            Message.menuBox(3, 30, " C. I N T E R M E D I A T E ", ConsoleColor.Blue, ConsoleColor.White, 1, -10);
             Thread.Sleep(250);
-            Message.menuBox(3, 30, " D. E N T E R T A I N M E N T ", ConsoleColor.Blue, ConsoleColor.White, 1, 10);
+            Message.menuBox(3, 30, " D. E N T E R T A I N M E N T ", ConsoleColor.White, ConsoleColor.Blue, 1, 10);
             Thread.Sleep(250);
-            Message.menuBox(3, 30, " E. C R E D I T S ", ConsoleColor.White, ConsoleColor.Blue, 1, -10);
+            Message.menuBox(3, 30, " E. C R E D I T S ", ConsoleColor.Blue, ConsoleColor.White, 1, -10);
+            Thread.Sleep(250);
+            Message.menuBox(3, 30, " F. E X I T ", ConsoleColor.White, ConsoleColor.Blue, 1, 10);
             Message.menuBox(1, 10, " E N T E R  K E Y  O F  Y O U R  C H O I C E ", ConsoleColor.Blue, ConsoleColor.White);
             Console.CursorLeft = (Console.WindowWidth / 2);
 
@@ -142,6 +153,7 @@ namespace DEDORO_FINAL
             else if (select.Equals(ConsoleKey.C)) { Intermidiate(); }
             else if (select.Equals(ConsoleKey.D)) { Entertainement(); }
             else if (select.Equals(ConsoleKey.E)) { Credits(); }
+            else if (select.Equals(ConsoleKey.F)) { exit();  }
 
             else
             {
@@ -255,31 +267,32 @@ namespace DEDORO_FINAL
 
 
             Console.Clear();
-            Console.BackgroundColor = Color.Blue;
+            Console.BackgroundColor = Color.SteelBlue;
             Console.ForegroundColor = Color.White;
             Console.Clear();
 
             Message.TitleBox(" B A S I C ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
-            Message.CreateBox("", 15, 30, "");
+            Message.CreateBox("", 20, 30, "");
 
             Console.CursorTop = 7;
-            Message.menuBox(3, 22, " [A]. S W A P ", ConsoleColor.Blue,ConsoleColor.White,1);
-            Message.menuBox(3, 22, " [B]. M D A S ", ConsoleColor.Blue, ConsoleColor.White,1);
-            Message.menuBox(3, 22, " [C]. HIGHEST NUMBER ", ConsoleColor.Blue, ConsoleColor.White,1);
+            Message.menuBox(3, 32, " [A]. S W A P ", ConsoleColor.Blue,ConsoleColor.White,1);
+            Message.menuBox(3, 32, " [B]. M D A S ", ConsoleColor.Blue, ConsoleColor.White,1);
+            Message.menuBox(3, 32, " [C]. HIGHEST NUMBER ", ConsoleColor.Blue, ConsoleColor.White,1);
 
             Console.WriteLine();
             Console.WriteLine();
-            Message.menuBox(1, 30, " E N T E R  L E T T E R ", ConsoleColor.Red, ConsoleColor.White);
-            Message.menuBox(1, 30, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
-            Message.menuBox(1, 30, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 32, " E N T E R  L E T T E R ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 32, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 32, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
             select = Console.ReadKey().Key;
 
             Console.BackgroundColor = Color.Blue;
    
-            Console.Clear();
+            
 
             if (select.Equals(ConsoleKey.A))
             {
+                Console.Clear();
                 double num1, num2;
                 string lblnum1, lblnum2;
 
@@ -324,6 +337,7 @@ namespace DEDORO_FINAL
             }
             else if (select.Equals(ConsoleKey.B))
             {
+                Console.Clear();
 
                 double num1, num2;
 
@@ -362,6 +376,7 @@ namespace DEDORO_FINAL
             }
             else if (select.Equals(ConsoleKey.C))
             {
+                Console.Clear();
                 double[] num = new double[3];
 
                 Message.TitleBox(" HIGHEST NUMBER ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
@@ -388,6 +403,12 @@ namespace DEDORO_FINAL
             {
                 SystemMenu();
             }
+            else
+            {
+                Message.TitleBox("Invalid Choice Try Again", 5, 40, ConsoleColor.Red, ConsoleColor.White);
+                Console.ReadKey();
+                Basic();
+            }
 
             Console.ReadKey();
 
@@ -402,24 +423,24 @@ namespace DEDORO_FINAL
 
 
             Console.Clear();
-            Console.BackgroundColor = Color.Blue;
+            Console.BackgroundColor = Color.SteelBlue;
             Console.Clear();
 
             Message.TitleBox(" I N T E R M E D I A T E ", 3, 40, ConsoleColor.Red, ConsoleColor.White);
-            Message.CreateBox("", 15, 36, "");
+            Message.CreateBox("", 20, 36, "");
 
             Console.CursorTop = 7;
-            Message.menuBox(3, 30, " [A]. STRING MANIPULATION ", ConsoleColor.Blue, ConsoleColor.White, 1);
-            Message.menuBox(3, 30, " [B]. GRADE COMPUTATION ", ConsoleColor.Blue, ConsoleColor.White, 1);
-            Message.menuBox(3, 30, " [C]. SALES TRANSACTION ", ConsoleColor.Blue, ConsoleColor.White, 1);
+            Message.menuBox(3, 38, " [A]. STRING MANIPULATION ", ConsoleColor.Blue, ConsoleColor.White, 1);
+            Message.menuBox(3, 38, " [B]. GRADE COMPUTATION ", ConsoleColor.Blue, ConsoleColor.White, 1);
+            Message.menuBox(3, 38, " [C]. SALES TRANSACTION ", ConsoleColor.Blue, ConsoleColor.White, 1);
 
 
             Console.WriteLine();
             Console.WriteLine();
 
-            Message.menuBox(1, 32, " E N T E R  L E T T E R " , ConsoleColor.Red, ConsoleColor.White);
-            Message.menuBox(1, 32, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
-            Message.menuBox(1, 32, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 38, " E N T E R  L E T T E R " , ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 38, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 38, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
 
             select = Console.ReadKey().Key;
 
@@ -467,239 +488,96 @@ namespace DEDORO_FINAL
                 Message.Show(result, "Press any key to continue....");
 
 
-
-
-
-
             }
             else if (select.Equals(ConsoleKey.B))
             {
-                Console.BackgroundColor = Color.Blue;
+                Console.BackgroundColor = Color.SteelBlue;
                 Console.Clear();
+                Message.TitleBox(" GRADE COMPUTATION", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+                Message.CreateBox("", 16, 30, "");
+                Console.CursorTop = 7;
+                Message.menuBox(3, 32, " [A]. INSERT STUDENT GRADE ", ConsoleColor.Blue, ConsoleColor.White, 1);
+                Message.menuBox(3, 32, " [B]. DELETE STUDENT GRADE ", ConsoleColor.Blue, ConsoleColor.White, 1);
 
+                Console.WriteLine();
+                Console.WriteLine();
+                Message.menuBox(1, 32, " E N T E R  L E T T E R ", ConsoleColor.Red, ConsoleColor.White);
+                Message.menuBox(1, 32, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
+                Message.menuBox(1, 32, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
+             
+                ConsoleKey sel = Console.ReadKey().Key;
 
-                string sname, lblnosubj, lblsname, lblsubj, lblp, lblm, lblf, count;
-                int subjNO;
-
-
-                Message.TitleBox(" GRADE COMPUTATION ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
-                Message.CreateBox("", 12, 70, ". . . .");
-
-           
-
-                lblnosubj = "Enter Number of Subject: ";
-                TextCenter(lblnosubj,0,-9);
-                Console.Write(lblnosubj, Color.Black);
-                subjNO = int.Parse(Console.ReadLine());
-
-                lblsname = "Enter Student name: ";
-                TextCenter(lblsname,-5);
-                Console.Write(lblsname, Color.Black);
-                sname = Console.ReadLine();
-
-                Console.Clear();
-
-                double[] pre = new double[subjNO];
-                double[] mid = new double[subjNO];
-                double[] fin = new double[subjNO];
-                double[] ave = new double[subjNO];
-                string[] subjName = new string[subjNO];
-                string[] remarks = new string[subjNO];
-                var stgrList = new List<StudentGradeModel>();
-
-                if (subjNO > 0)
+                if (sel.Equals(ConsoleKey.A))
                 {
-
-                    for (int i = 0; i < subjNO; i++)
-                    {
-                        Console.BackgroundColor = Color.Blue;
-                        Console.Clear();
-
-                        Message.CreateBox(" INPUTING OF GRADES ", 12, 70, ". . . .");
-
-                        count = $"Subject No. {i + 1}";
-                        TextCenter(count,0, -10);
-                        Console.Write(count, Color.White);
-                        Console.WriteLine();
-
-                        lblsubj = "Enter Subj Name    : ";
-                        TextCenter("", -15);
-                        Console.Write(lblsubj, Color.Black);
-                        subjName[i] = Console.ReadLine();
-
-                        lblp = "Enter Prelim Grade : ";
-                        TextCenter("", -15);
-                        Console.Write(lblp, Color.Black);
-                        pre[i] = double.Parse(Console.ReadLine());
-
-                        lblm = "Enter Midterm Grade: ";
-                        TextCenter("", -15);
-                        Console.Write(lblm, Color.Black);
-                        mid[i] = double.Parse(Console.ReadLine());
-
-                        lblf = "Enter Midterm Grade: ";
-                        TextCenter("", -15);
-                        Console.Write(lblf, Color.Black);
-                        fin[i] = double.Parse(Console.ReadLine());
-
-                        ave[i] = Math.Round(((pre[i] + mid[i] + fin[i]) / 3),2);
-
-                        remarks[i] = (ave[i] <= 3.0) ? "PASSED" : "FAILED";
-
-                        stgrList.Add(new StudentGradeModel {
-                            sname = sname,
-                            subj = subjName[i],
-                            prelim = pre[i],
-                            midterm = mid[i],
-                            finals = fin[i],
-                            ave = ave[i],
-                            remarks = remarks[i]
-
-                        });
-
-                    }
-
-                    db.insertStudentGrade(stgrList);
-                    Console.BackgroundColor = Color.Black;
-                    Console.ForegroundColor = Color.White;
                     Console.Clear();
-                    var table = new ConsoleTable("S T U D E N T  N A M E","S U B J E C T", "P R E L I M", "M I D T E R M ", "F I N A L S", " A V E R A G E", "R E M A R K S");
-                    Console.WriteLine();
-                    Console.WriteLine(" GRADE COMPUTATION TABLE", Color.White);
-                    foreach (var stgrades in db.getStudentGradeList())
-                    {
-                        table.AddRow(stgrades.sname, stgrades.subj, stgrades.prelim, stgrades.midterm, stgrades.finals, stgrades.ave, stgrades.remarks);
-                    }
-                    
-                    table.Write();
-                    Console.WriteLine();
-
+                    insertStudent();
                 }
-
-
-
-
+                else if (sel.Equals(ConsoleKey.B))
+                {
+                    Console.Clear();
+                    deleteStudentGrade();
+                }
+                else if (sel.Equals(ConsoleKey.Backspace))
+                {
+                    SystemMenu();
+                }
+               
 
 
 
             }
             else if (select.Equals(ConsoleKey.C))
             {
-                Console.BackgroundColor = Color.Blue;
+                Console.BackgroundColor = Color.SteelBlue;
                 Console.Clear();
 
-                string lblCustNo, lblcname, lbltp, lblpay, count;
-                int noCust;
-
-                Message.TitleBox(" INPUTING OF CUSTOMER ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
-
-                Message.CreateBox("", 7, 70, ". . . .");
-
-
-                lblCustNo = "Enter Customer Number : ";
-                TextCenter(lblCustNo,0,-4);
-                Console.Write(lblCustNo, Color.Black);
-                noCust = int.Parse(Console.ReadLine());
+    
+                Message.TitleBox(" GRADE COMPUTATION", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+                Message.CreateBox("", 16, 30, "");
+                Console.CursorTop = 7;
+                Message.menuBox(3, 32, " [A]. INSERT CUSTOMER ", ConsoleColor.Blue, ConsoleColor.White, 1);
+                Message.menuBox(3, 32, " [B]. DELETE CUSTOMER ", ConsoleColor.Blue, ConsoleColor.White, 1);
 
 
+                Console.WriteLine();
+                Console.WriteLine();
+                Message.menuBox(1, 32, " E N T E R  L E T T E R ", ConsoleColor.Red, ConsoleColor.White);
+                Message.menuBox(1, 32, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
+                Message.menuBox(1, 32, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
+            
 
-                Console.Clear();
 
-                double[] totalPurch = new double[noCust];
-                double[] disc = new double[noCust];
-                double[] totalDue = new double[noCust];
-                double[] change = new double[noCust];
-                double[] cpay = new double[noCust];
-                string[] custName = new string[noCust];
+                ConsoleKey sel = Console.ReadKey().Key;
 
-                var custList = new List<CustomerModel>();
-
-                if (noCust > 0)
+                if (sel.Equals(ConsoleKey.A))
                 {
-
-                    for (int i = 0; i < noCust; i++)
-                    {
-
-                        Console.BackgroundColor = Color.Black;
-                        Console.Clear();
-                        Message.CreateBox(" INPUTING OF CUSTOMERS ", 12, 70, ". . . .");
-
-                        count = $"Customer No. {i + 1}";
-                        TextCenter(count);
-                        Console.Write(count, Color.White);
-                        Console.WriteLine();
-
-                        lblcname = "Enter Customer name : ";
-                        TextCenter("", -15,-10);
-                        Console.Write(lblcname, Color.Black);
-                        custName[i] = Console.ReadLine();
-
-                        lbltp =    "Enter Total Purchase: ";
-                        TextCenter("", -15);
-                        Console.Write(lbltp, Color.Black);
-                        totalPurch[i] = double.Parse(Console.ReadLine());
-
-                        disc[i] = (totalPurch[i] > 1000) ? totalPurch[i] * 0.05 : totalPurch[i] * 0.01;
-
-                        totalDue[i] = totalPurch[i] - disc[i];
-
-
-                        lblpay =   "Enter Cash payment  : ";
-                        TextCenter("", -15);
-                        Console.Write(lblpay, Color.Black);
-                        cpay[i] = double.Parse(Console.ReadLine());
-
-
-                        change[i] = cpay[i] - totalDue[i];
-
-
-                        custList.Add( new CustomerModel
-                            {
-                            CustName = (string)custName[i],
-                            totalPurch = (double) totalPurch[i],
-                            disc = (double) disc[i],
-                            totalDue = (double)totalDue[i],
-                            cpay = (double)cpay[i],
-                            change = (double)change[i]
-                            }
-                        );
-
-                    }
-
-                    db.insertCustomer(custList);
-
-
-                    Console.BackgroundColor = Color.Black;
-                    Console.ForegroundColor = Color.White;
                     Console.Clear();
-
-                    Console.WriteLine();
-                    
-                
-                    Console.WriteLine(" SALES TRANSACTION TABLE", Color.White);
-
-                    Console.WriteLine();
-
-                    var table = new ConsoleTable(" C U S T O M E R  N A M E ", " T O T A L  P U R C H A S E ", " D I S C O U N T ", " T O T A L  D U E ", " C A S H  P A Y M E N T ", " C H A N G E ");
-
-
+                    insertCustomer();
+                }
+                else if (sel.Equals(ConsoleKey.B))
+                {
+                    Console.Clear();
+                    deleteCustomer();
                   
-                    foreach (var cust in db.getCUstomerList())
-                    {
-                        table.AddRow(cust.CustName, cust.totalPurch, cust.disc, cust.totalDue, cust.cpay, cust.change);
-                    }
-
-                    table.Write();
-                    Console.WriteLine();
-
-
+                }
+                else if (sel.Equals(ConsoleKey.Backspace))
+                {
+                    SystemMenu();
                 }
 
+                
 
-                }
+
+            }
             else if (select.Equals(ConsoleKey.Backspace))
             {
                 SystemMenu();
+            }
+            else
+            {
+                Message.TitleBox("Invalid Choice Try Again", 5, 40, ConsoleColor.Red, ConsoleColor.White);
+                Console.ReadKey();
+                Intermidiate();
             }
 
             Console.ReadKey();
@@ -709,35 +587,49 @@ namespace DEDORO_FINAL
         public void Entertainement()
         {
             Console.Clear();
-            Console.BackgroundColor = Color.Blue;
+            Console.BackgroundColor = Color.SteelBlue;
             Console.Clear();
 
             Message.TitleBox(" E N T E R T A I N M E N T ", 3, 40, ConsoleColor.Red, ConsoleColor.White);
             Message.BoxColor = Color.White;
 
-            Message.CreateBox("", 10, 40, "SELECT THE KEY OF YOUR CHOICE");
+            Message.CreateBox("", 16, 30, "");
 
 
-           
 
-            string[] text =
-            {
-                "[A]. Snake Game",
-            };
+            Console.CursorTop = 7;
+            Message.menuBox(3, 32, " [A]. S N A K E ", ConsoleColor.Blue, ConsoleColor.White, 1);
+            Message.menuBox(3, 32, " [B]. C O L O R  G A M E ", ConsoleColor.Blue, ConsoleColor.White, 1);
 
-            Console.SetCursorPosition((Console.WindowWidth - text[0].Length) / 2, Console.CursorTop - 8);
-            Console.Write(text[0]);
-
-            Console.SetCursorPosition((Console.WindowWidth - text[0].Length) / 2, Console.CursorTop+5);
+            Console.WriteLine();
+            Console.WriteLine();
+            Message.menuBox(1, 32, " E N T E R  L E T T E R ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 32, " O F  Y O U R  C H O I C E ", ConsoleColor.Red, ConsoleColor.White);
+            Message.menuBox(1, 32, " [BACK SPACE] M E N U ", ConsoleColor.Red, ConsoleColor.White);
             select = Console.ReadKey().Key;
-            Console.Clear();
             if (select.Equals(ConsoleKey.A))
             {
                 
                 Snake snake = new Snake(USERNAME);
                 snake.Initialize();
             }
-
+            else if (select.Equals(ConsoleKey.B))
+            {
+                Console.BackgroundColor = Color.Black;
+                Console.Clear();
+                ColorGame cg = new ColorGame();
+                cg.gameStart();
+            }
+            else if (select.Equals(ConsoleKey.Backspace))
+            {
+                SystemMenu();
+            }
+            else
+            {
+                Message.TitleBox("Invalid Choice Try Again", 5, 40, ConsoleColor.Red, ConsoleColor.White);
+                Console.ReadKey();
+                Entertainement();
+            }
 
             Console.ReadKey(true);
 
@@ -821,14 +713,355 @@ namespace DEDORO_FINAL
             
             Message.menuBox(1, 20, " T H A N K  Y O U ", ConsoleColor.Blue, ConsoleColor.White);
 
-            System.Console.WriteLine();
-            System.Console.WriteLine();
+        
             pressAnyKey();
             Console.ReadKey();
 
         }
 
 
+
+        public void insertStudent()
+        {
+            Console.BackgroundColor = Color.Blue;
+            Console.Clear();
+
+
+            string sname, lblnosubj, lblsname, lblsubj, lblp, lblm, lblf, count;
+            int subjNO;
+
+
+            Message.TitleBox(" GRADE COMPUTATION ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+            Message.CreateBox("", 12, 70, ". . . .");
+
+
+
+            lblnosubj = "Enter Number of Subject: ";
+            TextCenter(lblnosubj, 0, -9);
+            Console.Write(lblnosubj, Color.Black);
+            subjNO = int.Parse(Console.ReadLine());
+
+            lblsname = "Enter Student name: ";
+            TextCenter(lblsname, -5);
+            Console.Write(lblsname, Color.Black);
+            sname = Console.ReadLine();
+
+            Console.Clear();
+
+            double[] pre = new double[subjNO];
+            double[] mid = new double[subjNO];
+            double[] fin = new double[subjNO];
+            double[] ave = new double[subjNO];
+            string[] subjName = new string[subjNO];
+            string[] remarks = new string[subjNO];
+            var stgrList = new List<StudentGradeModel>();
+
+            if (subjNO > 0)
+            {
+
+                for (int i = 0; i < subjNO; i++)
+                {
+                    Console.BackgroundColor = Color.Blue;
+                    Console.Clear();
+
+                    Message.CreateBox(" INPUTING OF GRADES ", 12, 70, ". . . .");
+
+                    count = $"Subject No. {i + 1}";
+                    TextCenter(count, 0, -10);
+                    Console.Write(count, Color.White);
+                    Console.WriteLine();
+
+                    lblsubj = "Enter Subj Name    : ";
+                    TextCenter("", -15);
+                    Console.Write(lblsubj, Color.Black);
+                    subjName[i] = Console.ReadLine();
+
+                    lblp = "Enter Prelim Grade : ";
+                    TextCenter("", -15);
+                    Console.Write(lblp, Color.Black);
+                    pre[i] = double.Parse(Console.ReadLine());
+
+                    lblm = "Enter Midterm Grade: ";
+                    TextCenter("", -15);
+                    Console.Write(lblm, Color.Black);
+                    mid[i] = double.Parse(Console.ReadLine());
+
+                    lblf = "Enter Midterm Grade: ";
+                    TextCenter("", -15);
+                    Console.Write(lblf, Color.Black);
+                    fin[i] = double.Parse(Console.ReadLine());
+
+                    ave[i] = Math.Round(((pre[i] + mid[i] + fin[i]) / 3), 2);
+
+                    remarks[i] = (ave[i] <= 3.0) ? "PASSED" : "FAILED";
+
+                    stgrList.Add(new StudentGradeModel
+                    {
+                        sname = sname,
+                        subj = subjName[i],
+                        prelim = pre[i],
+                        midterm = mid[i],
+                        finals = fin[i],
+                        ave = ave[i],
+                        remarks = remarks[i]
+
+                    });
+
+                }
+
+                db.insertStudentGrade(stgrList);
+                Console.BackgroundColor = Color.Black;
+                Console.ForegroundColor = Color.White;
+                Console.Clear();
+                var table = new ConsoleTable("S T U D E N T  N A M E", "S U B J E C T", "P R E L I M", "M I D T E R M ", "F I N A L S", " A V E R A G E", "R E M A R K S");
+                Console.WriteLine();
+                Console.WriteLine(" GRADE COMPUTATION TABLE", Color.White);
+                foreach (var stgrades in db.getStudentGradeList())
+                {
+                    table.AddRow(stgrades.sname, stgrades.subj, stgrades.prelim, stgrades.midterm, stgrades.finals, stgrades.ave, stgrades.remarks);
+                }
+
+                table.Write();
+                Console.WriteLine();
+
+            }
+        }
+
+        public void deleteStudentGrade()
+        {
+
+            System.Console.WriteLine();
+            Console.Write(" ENTER THE ID TO DELETE : ");
+
+            System.Console.WriteLine();
+            System.Console.WriteLine();
+            var table = new ConsoleTable("ID","S T U D E N T  N A M E", "S U B J E C T", "P R E L I M", "M I D T E R M ", "F I N A L S", " A V E R A G E", "R E M A R K S");
+
+            foreach (var stgrades in db.getStudentGradeList())
+            {
+                table.AddRow(stgrades.id, stgrades.sname, stgrades.subj, stgrades.prelim, stgrades.midterm, stgrades.finals, stgrades.ave, stgrades.remarks);
+            }
+
+
+            table.Write();
+            Console.CursorTop = 1;
+            Console.CursorLeft = 30;
+            int id = int.Parse(Console.ReadLine());
+
+
+            Message.TitleBox(" Are you sure you want to delete [Y]es/[N]o ",5,50,ConsoleColor.Red,ConsoleColor.White);
+
+            ConsoleKey sel = Console.ReadKey().Key;
+            if (sel.Equals(ConsoleKey.Y))
+            {
+                db.deleteStudent(id);
+                Message.TitleBox(" Do you want to delete another ? [Y]es/[N]o ", 5, 50, ConsoleColor.White, ConsoleColor.Black);
+                ConsoleKey key = Console.ReadKey().Key;
+
+                if (key.Equals(ConsoleKey.Y))
+                {
+                    Console.Clear();
+                    deleteStudentGrade();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                Intermidiate();
+            }
+            
+
+        
+
+
+        }
+
+        public void insertCustomer()
+        {
+            string lblCustNo, lblcname, lbltp, lblpay, count;
+            int noCust;
+
+            Message.TitleBox(" INPUTING OF CUSTOMER ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
+
+            Message.CreateBox("", 7, 70, ". . . .");
+
+
+            lblCustNo = "Enter Customer Number : ";
+            TextCenter(lblCustNo, 0, -4);
+            Console.Write(lblCustNo, Color.Black);
+            noCust = int.Parse(Console.ReadLine());
+
+
+
+            Console.Clear();
+
+            double[] totalPurch = new double[noCust];
+            double[] disc = new double[noCust];
+            double[] totalDue = new double[noCust];
+            double[] change = new double[noCust];
+            double[] cpay = new double[noCust];
+            string[] custName = new string[noCust];
+
+            var custList = new List<CustomerModel>();
+
+            if (noCust > 0)
+            {
+
+                for (int i = 0; i < noCust; i++)
+                {
+
+                    Console.BackgroundColor = Color.Black;
+                    Console.Clear();
+                    Message.CreateBox(" INPUTING OF CUSTOMERS ", 12, 70, ". . . .");
+
+                    count = $"Customer No. {i + 1}";
+                    TextCenter(count);
+                    Console.Write(count, Color.White);
+                    Console.WriteLine();
+
+                    lblcname = "Enter Customer name : ";
+                    TextCenter("", -15, -10);
+                    Console.Write(lblcname, Color.Black);
+                    custName[i] = Console.ReadLine();
+
+                    lbltp = "Enter Total Purchase: ";
+                    TextCenter("", -15);
+                    Console.Write(lbltp, Color.Black);
+                    totalPurch[i] = double.Parse(Console.ReadLine());
+
+                    disc[i] = (totalPurch[i] > 1000) ? totalPurch[i] * 0.05 : totalPurch[i] * 0.01;
+
+                    totalDue[i] = totalPurch[i] - disc[i];
+
+
+                    lblpay = "Enter Cash payment  : ";
+                    TextCenter("", -15);
+                    Console.Write(lblpay, Color.Black);
+                    cpay[i] = double.Parse(Console.ReadLine());
+
+
+                    change[i] = cpay[i] - totalDue[i];
+
+
+                    custList.Add(new CustomerModel
+                    {
+                        CustName = (string)custName[i],
+                        totalPurch = (double)totalPurch[i],
+                        disc = (double)disc[i],
+                        totalDue = (double)totalDue[i],
+                        cpay = (double)cpay[i],
+                        change = (double)change[i]
+                    }
+                    );
+
+                }
+
+                db.insertCustomer(custList);
+
+
+                Console.BackgroundColor = Color.Black;
+                Console.ForegroundColor = Color.White;
+                Console.Clear();
+
+                Console.WriteLine();
+
+
+                Console.WriteLine(" SALES TRANSACTION TABLE", Color.White);
+
+                Console.WriteLine();
+
+                var table = new ConsoleTable(" C U S T O M E R  N A M E ", " T O T A L  P U R C H A S E ", " D I S C O U N T ", " T O T A L  D U E ", " C A S H  P A Y M E N T ", " C H A N G E ");
+
+
+
+                foreach (var cust in db.getCUstomerList())
+                {
+                    table.AddRow(cust.CustName, cust.totalPurch, cust.disc, cust.totalDue, cust.cpay, cust.change);
+                }
+
+                table.Write();
+                Console.WriteLine();
+
+
+            }
+
+        }
+
+        public void deleteCustomer()
+        {
+
+            System.Console.WriteLine();
+            Console.Write(" ENTER THE ID TO DELETE : ");
+
+            System.Console.WriteLine();
+            System.Console.WriteLine();
+
+            var table = new ConsoleTable(" ID "," C U S T O M E R  N A M E ", " T O T A L  P U R C H A S E ", " D I S C O U N T ", " T O T A L  D U E ", " C A S H  P A Y M E N T ", " C H A N G E ");
+
+
+
+            foreach (var cust in db.getCUstomerList())
+            {
+                table.AddRow(cust.ID, cust.CustName, cust.totalPurch, cust.disc, cust.totalDue, cust.cpay, cust.change);
+            }
+
+            table.Write();
+            Console.WriteLine();
+
+            Console.CursorTop = 1;
+            Console.CursorLeft = 30;
+            int id = int.Parse(Console.ReadLine());
+
+
+            Message.TitleBox(" Are you sure you want to delete [Y]es/[N]o ", 5, 50, ConsoleColor.Red, ConsoleColor.White);
+
+            ConsoleKey sel = Console.ReadKey().Key;
+            if (sel.Equals(ConsoleKey.Y))
+            {
+                db.deleteCustomer(id);
+                Message.TitleBox(" Do you want to delete another ? [Y]es/[N]o ", 5, 50, ConsoleColor.White, ConsoleColor.Black);
+                ConsoleKey key = Console.ReadKey().Key;
+
+                if (key.Equals(ConsoleKey.Y))
+                {
+                    Console.Clear();
+                    deleteCustomer();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                Intermidiate();
+            }
+
+
+
+
+
+        }
+
+        public void exit()
+        {
+            for (int i = 3; i >= 0; i--)
+            {
+                Console.BackgroundColor = Color.Red;
+                Console.Clear();
+                Console.CursorTop = 7;
+                Message.TitleBox(" S Y S T E M    E X I T ", 6, 60, ConsoleColor.Red, ConsoleColor.White);
+                Console.CursorTop = 11;
+                Console.CursorLeft = (Console.WindowWidth / 2) - 8;
+                Console.WriteLine("E X I T T I N G  I N  {0}", i);
+                Thread.Sleep(1000);
+
+            }
+            System.Environment.Exit(0);
+        }
         // POSITIONING OF THE CURSOR
 
         public void pressAnyKey()
@@ -845,6 +1078,7 @@ namespace DEDORO_FINAL
         public void TextCenter(string text, int addLeft = 0,int addTop = 0)
         {
             Console.SetCursorPosition(((Console.WindowWidth - text.Length) / 2) + addLeft, Console.CursorTop+addTop);
+            
         }
         public void Divider()
         {

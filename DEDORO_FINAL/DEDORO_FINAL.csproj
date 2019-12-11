@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animations.cs" />
+    <Compile Include="ColorGame.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Model\CustomerModel.cs" />

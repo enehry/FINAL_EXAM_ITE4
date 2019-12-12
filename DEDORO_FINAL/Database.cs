@@ -15,7 +15,8 @@ namespace DEDORO_FINAL
         MySqlDataReader dr;
         
 
-        
+        // Automatically create a connection string and pass to MysqlConnection
+        // When calling the class
         public Database()
         {
             string server = "localhost";
@@ -53,6 +54,8 @@ namespace DEDORO_FINAL
 
         }
 
+
+        // Insert userdata to database
         public int Insert(string fn,string mn,string ln, string un, string pw, string ut)
         {
             string query = "INSERT INTO TBL_USERS VALUES( @f, @m, @l, @u, @p, @ut)";
@@ -74,6 +77,8 @@ namespace DEDORO_FINAL
 
         }
 
+
+        // Checking the username to the high score table
         private bool CheckUserName(string username)
         {
             string query = "SELECT * FROM TBL_HIGHSCORES WHERE un = @un";
@@ -93,6 +98,8 @@ namespace DEDORO_FINAL
             return hasRecord;
         }
 
+
+        // return true if the Highest score of the logged in username is true;
         private bool isHighestScore(string username,int score)
         {
             string query = "SELECT SCORE FROM TBL_HIGHSCORES WHERE un = @un";
@@ -116,6 +123,8 @@ namespace DEDORO_FINAL
 
         }
 
+
+        // insert score if the score of the logged in username is the highest highscore
 
         public void insertScore(string username, int score)
         {
@@ -157,6 +166,8 @@ namespace DEDORO_FINAL
             }
         }
 
+
+        // List that collect object from the database
         public List<HighScoreModel> GetHighScores()
         {
             List<HighScoreModel> hs = new List<HighScoreModel>();
@@ -216,6 +227,7 @@ namespace DEDORO_FINAL
 
 
         }
+        // list that collect students grade from the database
 
         public List<StudentGradeModel> getStudentGradeList()
         {
@@ -250,6 +262,7 @@ namespace DEDORO_FINAL
 
         }
 
+        // List that collect Customer from the database
         public List<CustomerModel> getCUstomerList()
         {
             var custList = new List<CustomerModel>();
@@ -281,6 +294,8 @@ namespace DEDORO_FINAL
 
 
         }
+
+        // insert customer that accep list of objects
         public void insertCustomer(List<CustomerModel> custList)
         {
 

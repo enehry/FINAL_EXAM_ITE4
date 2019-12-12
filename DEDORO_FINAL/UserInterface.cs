@@ -15,10 +15,14 @@ namespace DEDORO_FINAL
 {
     public class UserInterface
     {
-
+    
        
+       /// <summary>
+       ///  USERINTERFACE CLASS
+       ///  Separate the views of the system to its functionally, to easily manipulate the code
+       ///  Changing anything from ui will not affect the other class
+       /// </summary>
         private ConsoleKey select;
-        SpeechSynthesizer syn = new SpeechSynthesizer();
 
         public string USERNAME;
         

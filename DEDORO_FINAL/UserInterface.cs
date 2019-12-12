@@ -73,10 +73,12 @@ namespace DEDORO_FINAL
             password = Console.ReadLine();
 
 
+
             
 
             if (db.isRegistered(username, password))
             {
+                new Thread(() => Console.Beep(320, 250)).Start();
                 Console.BackgroundColor = Color.SteelBlue;
                 Console.Clear();
                 USERNAME = username;
@@ -151,13 +153,25 @@ namespace DEDORO_FINAL
             Console.CursorLeft = (Console.WindowWidth / 2);
 
             select = Console.ReadKey().Key;
-
-            if (select.Equals(ConsoleKey.A)) { userAccount();  }
-            else if (select.Equals(ConsoleKey.B)) { Basic(); }
-            else if (select.Equals(ConsoleKey.C)) { Intermidiate(); }
-            else if (select.Equals(ConsoleKey.D)) { Entertainement(); }
-            else if (select.Equals(ConsoleKey.E)) { Credits(); }
-            else if (select.Equals(ConsoleKey.F)) { exit();  }
+            
+            if (select.Equals(ConsoleKey.A)) {
+                new Thread(() => Console.Beep(320, 250)).Start();
+                userAccount();  }
+            else if (select.Equals(ConsoleKey.B)) {
+                new Thread(() => Console.Beep(320, 250)).Start();
+                Basic(); }
+            else if (select.Equals(ConsoleKey.C)) {
+                new Thread(() => Console.Beep(320, 250)).Start();
+                Intermidiate(); }
+            else if (select.Equals(ConsoleKey.D)) {
+                new Thread(() => Console.Beep(320, 250)).Start();
+                Entertainement(); }
+            else if (select.Equals(ConsoleKey.E)) {
+                new Thread(() => Console.Beep(320, 250)).Start();
+                Credits(); }
+            else if (select.Equals(ConsoleKey.F)) {
+                new Thread(() => Console.Beep(320, 250)).Start();
+                exit();  }
 
             else
             {
@@ -250,9 +264,19 @@ namespace DEDORO_FINAL
 
             if (select.Equals(ConsoleKey.S))
             {
-                if(db.Insert(fn,mn,ln,user,pass,userType) > 0)
+                if (!db.checkUsername(user))
                 {
-                    Message.Show("Successfully Registered", "Press any key to continue....");
+                    if (db.Insert(fn, mn, ln, user, pass, userType) > 0)
+                    {
+                        Message.Show("Successfully Registered", "Press any key to continue....");
+                    }
+                }
+                else
+                {
+                    Message.TitleBox("Username Already Exists! Press any key to continue..", 5, 70, ConsoleColor.Red, ConsoleColor.White);
+                    Console.ReadKey();
+                    userAccount();
+
                 }
             }
 
@@ -536,7 +560,7 @@ namespace DEDORO_FINAL
                 Console.Clear();
 
     
-                Message.TitleBox(" GRADE COMPUTATION", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+                Message.TitleBox(" SALES TRANSACTION ", 3, 23, ConsoleColor.Red, ConsoleColor.White);
                 Message.CreateBox("", 16, 30, "");
                 Console.CursorTop = 7;
                 Message.menuBox(3, 32, " [A]. INSERT CUSTOMER ", ConsoleColor.Blue, ConsoleColor.White, 1);
@@ -735,7 +759,7 @@ namespace DEDORO_FINAL
             int subjNO;
 
 
-            Message.TitleBox(" GRADE COMPUTATION ", 3, 20, ConsoleColor.Red, ConsoleColor.White);
+            Message.TitleBox(" GRADE COMPUTATION ", 3, 22, ConsoleColor.Red, ConsoleColor.White);
             Message.CreateBox("", 12, 70, ". . . .");
 
 
@@ -819,7 +843,7 @@ namespace DEDORO_FINAL
                 Console.Clear();
                 var table = new ConsoleTable("S T U D E N T  N A M E", "S U B J E C T", "P R E L I M", "M I D T E R M ", "F I N A L S", " A V E R A G E", "R E M A R K S");
                 Console.WriteLine();
-                Console.WriteLine(" GRADE COMPUTATION TABLE", Color.White);
+                Console.WriteLine(" STUDENT GRADE TABLE", Color.White);
                 foreach (var stgrades in db.getStudentGradeList())
                 {
                     table.AddRow(stgrades.sname, stgrades.subj, stgrades.prelim, stgrades.midterm, stgrades.finals, stgrades.ave, stgrades.remarks);
@@ -888,7 +912,10 @@ namespace DEDORO_FINAL
             string lblCustNo, lblcname, lbltp, lblpay, count;
             int noCust;
 
-            Message.TitleBox(" INPUTING OF CUSTOMER ", 3, 25, ConsoleColor.Red, ConsoleColor.White);
+            Console.BackgroundColor = Color.Blue;
+            Console.Clear();
+
+            Message.TitleBox(" INPUTING OF CUSTOMER ", 3, 24, ConsoleColor.Red, ConsoleColor.White);
 
             Message.CreateBox("", 7, 70, ". . . .");
 

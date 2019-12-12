@@ -23,7 +23,7 @@ namespace DEDORO_FINAL
             Console.WindowHeight = Console.LargestWindowHeight;
             Console.WindowWidth = Console.LargestWindowWidth;
 
-            // Thread that play sound
+            //Thread that play sound
             ThreadStart sounds = new ThreadStart(Sounds.playFireFlies);
             Thread sound = new Thread(sounds);
             sound.Start();

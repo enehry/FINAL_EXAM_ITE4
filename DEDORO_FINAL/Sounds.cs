@@ -8,6 +8,8 @@ using System.Threading;
 
 namespace DEDORO_FINAL
 {
+
+    // Sound class handles the all the sound of the system
     public class Sounds
     {
         static SoundPlayer fireflies = new SoundPlayer();

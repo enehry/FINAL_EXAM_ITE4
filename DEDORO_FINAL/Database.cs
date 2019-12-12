@@ -54,6 +54,27 @@ namespace DEDORO_FINAL
 
         }
 
+        public bool checkUsername(string user)
+        {
+            string query = "SELECT * FROM TBL_USERS WHERE un = @un";
+            cmd = new MySqlCommand(query, con);
+            con.Open();
+            var param = cmd.Parameters;
+            param.Clear();
+
+            param.AddWithValue("@un", user);
+
+
+            dr = cmd.ExecuteReader();
+
+            bool hasRecord = (dr.HasRows) ? true : false;
+
+            con.Close();
+
+            return hasRecord;
+
+
+        }
 
         // Insert userdata to database
         public int Insert(string fn,string mn,string ln, string un, string pw, string ut)
